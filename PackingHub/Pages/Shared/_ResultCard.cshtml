@@ -1,0 +1,27 @@
+﻿@using PackingHub.Calculate
+@model List<PackingHub.Calculate.ContainerToCalc>
+
+<h1>Укладка груза, с их координатами</h1>
+<div class="address-cards">
+    @foreach (var container in Model)
+    {
+        @foreach(var packedCargo in container.GetPackedCargos)
+        {
+            var cargo = packedCargo.Item1;
+            var position = packedCargo.Item2;
+
+            var startCoordinates = position;
+            var endCoordinates = new Vector3(
+                position.X + cargo.Length,
+                position.Y + cargo.Width,
+                position.Z + cargo.Height
+            );
+            <div class="card">
+                <h3>@cargo.Name</h3>
+                <p>@cargo.Length x @cargo.Width x @cargo.Height placed: </p>
+                <p>Начальные координаты: (@startCoordinates.X, @startCoordinates.Y, @startCoordinates.Z)</p>
+                <p>Конечные координаты: (@endCoordinates.X, @endCoordinates.Y, @endCoordinates.Z)</p>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,13 @@
+﻿@model List<PackingHub.Models.Address>
+
+<div class="address-cards">
+    @foreach (var address in Model)
+    {
+        <div class="card">
+            <h3>@address.Name</h3>
+            <p>Страна: @address.Country</p>
+            <p>г. @address.City, ул. @address.Street, д. @address.House</p>
+            <p>@address.Comments</p>
+        </div>
+    }
+</div>

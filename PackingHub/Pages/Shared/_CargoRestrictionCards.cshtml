@@ -1,0 +1,13 @@
+﻿@model List<PackingHub.Models.CargoRestriction>
+
+<div class="address-cards">
+    @foreach (var address in Model)
+    {
+        <div class="card">
+            <h3>Ограничение №@address.Id</h3>
+            <p>Номер первого груза: @address.Cargo1Id</p>
+            <p>Номер второго груза: @address.Cargo2Id</p>
+            <p>Ограничение: @address.Restriction</p>
+        </div>
+    }
+</div>

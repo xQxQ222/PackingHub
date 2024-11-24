@@ -1,0 +1,18 @@
+﻿@model IEnumerable<PackingHub.Models.Cargo>
+
+<div class="cargo-cards">
+    @foreach (var cargo in Model)
+    {
+        <div class="cargo-card">
+            <h3>@cargo.Name</h3>
+            <p><strong>Номер:</strong> @cargo.Number</p>
+            <p><strong>Размеры:</strong> @cargo.Length x @cargo.Width x @cargo.Height</p>
+            <p><strong>Вес:</strong> @cargo.Weight kg</p>
+            <p><strong>Поставщик:</strong> @cargo.Supplier</p>
+            <p><strong>Клиент:</strong> @cargo.Customer</p>
+            <p><strong>Адрес доставки:</strong> @cargo.DeliveryAddress</p>
+            <p><strong>Хрупкость:</strong> @cargo.Fragility</p>
+            <p><strong>Статус:</strong> @cargo.Status</p>
+        </div>
+    }
+</div>

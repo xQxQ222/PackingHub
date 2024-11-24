@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PackingHub.Models.Transport>
+
+<div class="address-cards">
+    @foreach (var transport in Model)
+    {
+        <div class="card">
+            <h3>@transport.Brand @transport.Model</h3>
+            <p>VIN: @transport.VinNumber</p>
+            <p>Тип: @transport.VehicleType</p>
+            <p>Грузоподъемность: @transport.LoadCapacity</p>
+            <p>Объем кузова: @transport.BodyVolume</p>
+            <p>Комментарии: @transport.Comments</p>
+        </div>
+    }
+</div>

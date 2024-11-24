@@ -1,0 +1,22 @@
+﻿@model List<PackingHub.Models.Route>
+<h2>Шаг 3: Выберите маршрут</h2>
+@foreach (var route in Model)
+{
+    <label>
+        <input type="radio" name="route" value="@route.RouteNumber" />
+        Маршрут №@route.RouteNumber
+    </label>
+    <br />
+}
+<div>
+    <label>Выберите дату отправления:</label>
+    <input type="date" id="departureDate" /><br />
+
+    <label>Выберите дату прибытия:</label>
+    <input type="date" id="arrivalDate" /><br />
+
+    <label>Статус:</label>
+    <input type="text" id="status" /><br />
+
+    <button onclick="submitLoad()">Создать погрузку</button>
+</div>

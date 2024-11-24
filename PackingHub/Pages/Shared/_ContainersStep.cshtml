@@ -1,0 +1,11 @@
+﻿@model List<PackingHub.Models.Container>
+<h2>Шаг 2: Выберите контейнер</h2>
+@foreach (var container in Model)
+{
+    <label>
+        <input type="radio" name="container" value="@container.Number" />
+        Контейнер №@container.Number
+    </label>
+    <br />
+}
+<button onclick="loadStep('GetRoutes')">Далее</button>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PackingHub.Models.Container>
+
+<div class="card-container">
+    @foreach (var container in Model)
+    {
+        <div class="container-card">
+            <h3>@container.Name</h3>
+            <p><strong>Длина:</strong> @container.Length м</p>
+            <p><strong>Ширина:</strong> @container.Width м</p>
+            <p><strong>Высота:</strong> @container.Height м</p>
+            <p><strong>Вес:</strong> @container.Weight кг</p>
+        </div>
+    }
+</div>

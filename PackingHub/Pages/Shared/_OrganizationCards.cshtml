@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PackingHub.Models.Organization>
+
+<div class="address-cards">
+    @foreach (var cargo in Model)
+    {
+        <div class="card">
+            <h3>@cargo.Name</h3>
+            <p>@cargo.OrganizationType</p>
+            <p>ИНН: @cargo.Inn</p>
+            <p>@cargo.LegalNumber</p>
+            <p>Email: @cargo.Email</p>
+            <p>Телефон: @cargo.Phone</p>
+            <p>Адрес: @cargo.Address</p>
+            <p>@cargo.Description</p>
+        </div>
+    }
+</div>

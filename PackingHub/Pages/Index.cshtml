@@ -1,0 +1,80 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = null;  // Отключаем использование макета
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Укладка грузов</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/loginStyle.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <h1 class="title">The Packing Hub</h1>
+        </header>
+
+        <!-- Основной блок -->
+        <main class="main-content">
+            <section class="about-us">
+                <h2>О нас</h2>
+                <p>
+                    Наша платформа предлагает инновационные алгоритмы для укладки грузов в контейнеры.
+                    Мы учитываем размеры, вес и хрупкость груза, чтобы обеспечить максимальную эффективность
+                    и безопасность ваших перевозок. Доверьте нам планирование, чтобы сосредоточиться на главном.
+                </p>
+            </section>
+
+            <!-- Раздел для логина -->
+            <section class="login-section">
+                <p class="login-prompt">Уже являетесь нашим клиентом?</p>
+                <button class="login-button" id="open-modal">Войти</button>
+            </section>
+        </main>
+
+        <!-- Модальное окно -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="close-modal">&times;</span>
+                <h2>Вход в личный кабинет</h2>
+                <form id="loginForm" class="login-form" method="post" data-ajax="true">
+                    <div class="form-group">
+                        <label for="username">Логин:</label>
+                        <input type="text" id="username" name="Username" placeholder="Введите ваш логин" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="Password" placeholder="Введите ваш пароль" required>
+                    </div>
+                    <button type="submit" class="login-button">Войти</button>
+                </form>
+                <!-- Ошибка входа -->
+                <div id="errorMessage" style="color: red; display: none;">
+                    Неправильный логин или пароль.
+                </div>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <p class="footer-text">Следите за нами в социальных сетях:</p>
+            <div class="social-icons">
+                <a href="https://vk.com" target="_blank">
+                    <img src="/Images/vk-icon.png" alt="ВКонтакте">
+                </a>
+                <a href="https://telegram.org" target="_blank">
+                    <img src="/Images/telegram-icon.png" alt="Telegram">
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/loginHandler.js"></script>
+    <script src="js/openLoginForm.js"</script>
+</body>
+</html>

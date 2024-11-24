@@ -1,0 +1,77 @@
+﻿.address-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.address-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+    .address-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .address-card h3 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #34495e;
+    }
+
+    .address-card p {
+        font-size: 14px;
+        color: #7f8c8d;
+        margin: 5px 0;
+    }
+.card {
+    border: 1px solid #ccc; /* Тонкая серая граница */
+    padding: 15px; /* Отступы внутри карточки */
+    margin-bottom: 10px; /* Отступ снизу для разделения карточек */
+    border-radius: 8px; /* Скругленные углы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень для выделения карточки */
+    background-color: #fff; /* Белый фон для карточки */
+    transition: all 0.3s ease; /* Плавный переход при наведении */
+}
+
+    .card:hover {
+        transform: translateY(-5px); /* Легкое поднятие карточки при наведении */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Усиленная тень при наведении */
+    }
+
+.restriction-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.restriction-cards {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+    .restriction-cards:hover {
+        transform: translateY(-5px);
+    }
+
+    .restriction-cards h3 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #34495e;
+    }
+
+    .restriction-cards p {
+        font-size: 14px;
+        color: #7f8c8d;
+        margin: 5px 0;
+    }

@@ -1,0 +1,11 @@
+﻿@model List<PackingHub.Models.Cargo>
+<h2>Шаг 1: Выберите грузы</h2>
+@foreach (var cargo in Model)
+{
+    <label>
+        <input type="checkbox" name="cargos" value="@cargo.Number" />
+        Груз @cargo.Name
+    </label>
+    <br />
+}
+<button onclick="loadStep('GetContainers')">Далее</button>

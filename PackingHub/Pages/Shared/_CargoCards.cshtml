@@ -1,0 +1,24 @@
+﻿@model List<PackingHub.Models.Cargo>
+
+<div class="address-cards">
+    @foreach (var address in Model)
+    {
+        string cA = address.ChemicallyActive == true ? "Да" : "Нет";
+        string f = address.Flammable == true ? "Да" : "Нет";
+        string fr = address.Fragility == true ? "Да" : "Нет";
+        <div class="card">
+            <h3>Груз №@address.Number</h3>
+            <h3>@address.Name</h3>
+            <p>Длина: @address.Length м., Ширина: @address.Width м., Высота: @address.Height м.</p>
+            <p>Вес груза: @address.Weight кг.</p>
+            <p>ИНН получателя: @address.Customer</p>
+            <p>ИНН поставщика: @address.Supplier</p>
+            <p>Адрес доставки: @address.DeliveryAddress</p>
+            <p>Хрупкий груз: @fr</p>
+            <p>Огнеопасный груз: @f</p>
+            <p>Химически активный груз: @cA</p>
+            <p>Статус: @address.Status</p>
+            <p>Дополнительное оборудование: @address.AdditionalEquipment.ToString()</p>
+        </div>
+    }
+</div>

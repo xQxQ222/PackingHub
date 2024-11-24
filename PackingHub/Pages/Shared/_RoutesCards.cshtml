@@ -1,0 +1,16 @@
+﻿@model List<PackingHub.Models.Route>
+
+<div class="address-cards">
+    @foreach (var address in Model)
+    {
+        <div class="card">
+            <h3>Маршрут №@address.RouteNumber</h3>
+            <p>Номера точек остановки: @address.AddressesNumbers</p>
+            <p>Длина маршрута: @address.Length км.</p>
+            <p>Транспорт: @address.Transport</p>
+            <p>Дата отбытия: @address.DepartureDate.ToString()</p>
+            <p>Дата прибытия: @address.ArrivalDate.ToString()</p>
+            <p>@address.Comments</p>
+        </div>
+    }
+</div>

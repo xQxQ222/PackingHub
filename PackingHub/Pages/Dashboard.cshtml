@@ -1,0 +1,202 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = null;  // Если используете общий макет
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="/css/dashboardStyle.css">
+    <link rel="stylesheet" href="/css/cardStyle.css">
+    <link rel="stylesheet" href="/css//transportCardsStyle.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Личный кабинет</h2>
+            </div>
+
+            <!-- Разделы с раскрывающимися списками -->
+            <div class="menu">
+                <!-- Раздел "Создать погрузку" -->
+                <div class="menu-item">
+                    <button class="menu-button" onclick="loadStep('GetCargos')">Создать погрузку</button>
+                </div>
+
+                <!-- Раздел "Данные" с подменю -->
+                <div class="menu-item" id="dataSection">
+                    <button class="menu-button">Данные <span class="arrow">▼</span></button>
+                    <div class="submenu">
+                        <button class="submenu-item" id="btn-cargos">Грузы</button>
+                        <button class="submenu-item" id="btn-containers">Контейнеры</button>
+                        <button class="submenu-item" id="btn-restrictions">Ограничения</button>
+                        <button class="submenu-item" id="btn-transport">Транспорт</button>
+                        <button class="submenu-item" id="btn-addresses">Адреса</button>
+                        <button class="submenu-item" id="btn-organizations">Организации</button>
+                        <button class="submenu-item" id="btn-routes">Маршруты</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content" id="main-content">
+            <h1>Добро пожаловать в личный кабинет!</h1>
+            <div class="content-area" >
+                <p>Выберите раздел слева для работы с данными.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Кнопка для создания адреса -->
+    <button id="create-address-btn" class="btn hidden" onclick="openCreateAddressModal()">Добавить адрес</button>
+
+    <!-- Кнопка для создания транспорта -->
+    <button id="create-transport-btn" class="btn hidden" onclick="openCreateTransportModal()">Добавить транспорт</button>
+
+    <button id="create-cargo-btn" class="btn hidden" onclick="openCreateCargoModal()">Добавить груз</button>
+
+    <button id="create-restriction-btn" class="btn hidden">Добавить ограничение</button>
+
+    <button id="create-organization-btn" class="btn hidden">Добавить организацию</button>
+
+    <button id="create-container-btn" class="btn hidden">Добавить контейнер</button>
+    <button id="create-route-btn" class="btn hidden">Добавить маршрут</button>
+
+
+    <!-- Модальное окно для создания нового адреса -->
+    <div id="createAddressModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreateAddressModal">&times;</span>
+            <h2>Создать новый адрес</h2>
+            <form id="createAddressForm">
+                <label for="addressName">Название:</label>
+                <input type="text" id="addressName" name="addressName" required><br><br>
+
+                <label for="addressCountry">Страна:</label>
+                <input type="text" id="addressCountry" name="addressCountry" required><br><br>
+
+                <label for="addressCity">Город:</label>
+                <input type="text" id="addressCity" name="addressCity" required><br><br>
+
+                <label for="addressStreet">Улица:</label>
+                <input type="text" id="addressStreet" name="addressStreet" required><br><br>
+
+                <label for="addressHouse">Дом:</label>
+                <input type="text" id="addressHouse" name="addressHouse" required><br><br>
+
+                <label for="addressComments">Комментарии:</label>
+                <textarea id="addressComments" name="addressComments"></textarea><br><br>
+
+                <button type="submit" class="btn btn-success">Создать</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Модальное окно -->
+    <div id="createTransportModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCreateTransportModal">&times;</span>
+            <h2>Создать новый транспорт</h2>
+            <form id="create-transport-form">
+                <label for="vinNumber">VIN номер:</label>
+                <input type="text" id="vinNumber" name="vinNumber" required>
+
+                <label for="vehicleType">Тип транспортного средства:</label>
+                <input type="text" id="vehicleType" name="vehicleType" required>
+
+                <label for="brand">Марка:</label>
+                <input type="text" id="brand" name="brand" required>
+
+                <label for="model">Модель:</label>
+                <input type="text" id="model" name="model" required>
+
+                <label for="loadCapacity">Грузоподъемность:</label>
+                <input type="number" id="loadCapacity" name="loadCapacity" required>
+
+                <label for="bodyVolume">Объем кузова:</label>
+                <input type="number" id="bodyVolume" name="bodyVolume" required>
+
+                <label for="comments">Комментарии:</label>
+                <textarea id="comments" name="comments"></textarea>
+
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="createCargoModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal-btn">&times;</span>
+            <h2>Добавить новый груз</h2>
+            <form id="create-cargo-form">
+
+                <label for="name">Название контейнера:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="length">Длина груза:</label>
+                <input type="number" id="length" name="length" required>
+
+                <label for="width">Ширина груза:</label>
+                <input type="number" id="width" name="width" required>
+
+                <label for="height">Высота груза:</label>
+                <input type="number" id="height" name="height" required>
+
+                <label for="weight">Масса груза:</label>
+                <input type="number" id="weight" name="weight" required>
+
+                <label for="supplier">ИНН поставщика:</label>
+                <input type="text" id="supplier" name="supplier" required>
+
+                <label for="customer">ИНН получателя:</label>
+                <input type="text" id="customer" name="customer" required>
+
+                <label for="deliveryAddress">Адрес доставки:</label>
+                <textarea id="deliveryAddress" name="deliveryAddress"></textarea>
+
+                <label for="fragility">Хрупкий груз</label>
+                <input type="checkbox" id="fragility" name="fragility" >
+
+                <label for="flammable">Огнеопасный груз</label>
+                <input type="checkbox" id="flammable" name="flammable" >
+
+                <label for="chemicallyActive">Химически опасный груз</label>
+                <input type="checkbox" id="chemicallyActive" name="chemicallyActive" >
+
+                <label for="status">Статус</label>
+                <input type="text" name="status" id="status" required>
+
+                <label for="addEq">Дополнительное оборудование</label>
+                <input type="checkbox" name="addEq" id="addEq">
+
+
+
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    
+
+
+
+
+    <script src="js/drawCards.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/addAddressButton.js"></script>
+    <script src="js/addTransportButton.js"></script>
+    <script src="js/addCargoButton.js"></script>
+    <script src="js/planSteps.js"></script>
+</body>
+</html>
