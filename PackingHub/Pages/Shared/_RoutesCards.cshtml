@@ -1,13 +1,21 @@
-﻿@model List<PackingHub.Models.Route>
+﻿@model List<PackingHub.HelperMethods.RouteWithAddressArray>
 
 <div class="address-cards">
     @foreach (var address in Model)
     {
         <div class="card">
             <h3>Маршрут №@address.RouteNumber</h3>
-            <p>Номера точек остановки: @address.AddressesNumbers</p>
+            <p>Адреса:</p>
+            <select name="addresses_@address.RouteNumber">
+                <option value="empty"></option>
+                @foreach (var addressN in address.addresses) // Предполагается, что у каждого груза есть список адресов
+                {
+                    <option value="@addressN.Id">г. @addressN.City, ул. @addressN.Street, д. @addressN.House</option>
+                }
+            </select>
+            <br />
             <p>Длина маршрута: @address.Length км.</p>
-            <p>Транспорт: @address.Transport</p>
+            <p>Транспорт: @address.transport.Brand @address.transport.Model</p>
             <p>Дата отбытия: @address.DepartureDate.ToString()</p>
             <p>Дата прибытия: @address.ArrivalDate.ToString()</p>
             <p>@address.Comments</p>

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace PackingHub.Pages
+namespace PackingHub.Pages.Shared
 {
-    public class _ContainerCardsModel : PageModel
+    public class modalAddressModel : PageModel
     {
         public void OnGet()
         {

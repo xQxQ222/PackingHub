@@ -1,11 +1,17 @@
 ﻿@model List<PackingHub.Models.Container>
 <h2>Шаг 2: Выберите контейнер</h2>
-@foreach (var container in Model)
+@foreach (var cargo in Model)
 {
-    <label>
-        <input type="radio" name="container" value="@container.Number" />
-        Контейнер №@container.Number
-    </label>
-    <br />
+    <div class="address-cards">
+        <div class="card">
+            <h3>Контейнер №@cargo.Number</h3>
+            <h3>@cargo.Name</h3>
+            <p>Размеры: @cargo.Length м. x @cargo.Width м. х @cargo.Height м.</p>
+            <p>Толщина стенок: @cargo.WallThickness см.</p>
+            <label>
+                <input type="radio" name="cargos" value="@cargo.Number" />
+            </label>
+        </div>
+    </div>
 }
-<button onclick="loadStep('GetRoutes')">Далее</button>
+<button class="menu-button" onclick="loadStep('GetRoutes')">Далее</button>

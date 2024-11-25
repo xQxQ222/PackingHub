@@ -1,0 +1,27 @@
+﻿<div id="createAddressModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeCreateAddressModal">&times;</span>
+        <h2>Создать новый адрес</h2>
+        <form id="createAddressForm">
+            <label for="addressName">Название:</label>
+            <input type="text" id="addressName" name="addressName" required><br><br>
+
+            <label for="addressCountry">Страна:</label>
+            <input type="text" id="addressCountry" name="addressCountry" required><br><br>
+
+            <label for="addressCity">Город:</label>
+            <input type="text" id="addressCity" name="addressCity" required><br><br>
+
+            <label for="addressStreet">Улица:</label>
+            <input type="text" id="addressStreet" name="addressStreet" required><br><br>
+
+            <label for="addressHouse">Дом:</label>
+            <input type="text" id="addressHouse" name="addressHouse" required><br><br>
+
+            <label for="addressComments">Комментарии:</label>
+            <textarea id="addressComments" name="addressComments"></textarea><br><br>
+
+            <button type="submit" class="btn btn-success">Создать</button>
+        </form>
+    </div>
+</div>

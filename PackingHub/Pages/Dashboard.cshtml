@@ -26,14 +26,14 @@
             <div class="menu">
                 <!-- Раздел "Создать погрузку" -->
                 <div class="menu-item">
-                    <button class="menu-button" onclick="loadStep('GetCargos')">Создать погрузку</button>
+                    <button class="menu-button" onclick="loadStep('GetCargos')">Создать план погрузки</button>
                 </div>
 
                 <!-- Раздел "Данные" с подменю -->
                 <div class="menu-item" id="dataSection">
                     <button class="menu-button">Данные <span class="arrow">▼</span></button>
                     <div class="submenu">
-                        <button class="submenu-item" id="btn-cargos">Грузы</button>
+                        <button class="submenu-item" id="btn-cargos">Товары</button>
                         <button class="submenu-item" id="btn-containers">Контейнеры</button>
                         <button class="submenu-item" id="btn-restrictions">Ограничения</button>
                         <button class="submenu-item" id="btn-transport">Транспорт</button>
@@ -60,21 +60,19 @@
     <!-- Кнопка для создания транспорта -->
     <button id="create-transport-btn" class="btn hidden" onclick="openCreateTransportModal()">Добавить транспорт</button>
 
-    <button id="create-cargo-btn" class="btn hidden" onclick="openCreateCargoModal()">Добавить груз</button>
+    <button id="create-cargo-btn" class="btn hidden" onclick="openCreateCargoModal()">Добавить товар</button>
 
     <button id="create-restriction-btn" class="btn hidden">Добавить ограничение</button>
 
     <button id="create-organization-btn" class="btn hidden">Добавить организацию</button>
 
-    <button id="create-container-btn" class="btn hidden">Добавить контейнер</button>
+    <button id="create-container-btn" class="btn hidden" onclick="openCreateContainerModal()">Добавить контейнер</button>
     <button id="create-route-btn" class="btn hidden">Добавить маршрут</button>
 
-
-    <!-- Модальное окно для создания нового адреса -->
     <div id="createAddressModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close" onclick="closeCreateAddressModal">&times;</span>
-            <h2>Создать новый адрес</h2>
+            <h2>Добавить новый адрес</h2>
             <form id="createAddressForm">
                 <label for="addressName">Название:</label>
                 <input type="text" id="addressName" name="addressName" required><br><br>
@@ -100,12 +98,11 @@
     </div>
 
 
-
     <!-- Модальное окно -->
     <div id="createTransportModal" class="modal hidden">
         <div class="modal-content">
             <span class="close-btn" onclick="closeCreateTransportModal">&times;</span>
-            <h2>Создать новый транспорт</h2>
+            <h2>Добавить новый транспорт</h2>
             <form id="create-transport-form">
                 <label for="vinNumber">VIN номер:</label>
                 <input type="text" id="vinNumber" name="vinNumber" required>
@@ -136,22 +133,22 @@
     <div id="createCargoModal" class="modal hidden">
         <div class="modal-content">
             <span class="close-btn" id="close-modal-btn">&times;</span>
-            <h2>Добавить новый груз</h2>
+            <h2>Добавить новый товар</h2>
             <form id="create-cargo-form">
 
-                <label for="name">Название контейнера:</label>
+                <label for="name">Название товара:</label>
                 <input type="text" id="name" name="name" required>
 
-                <label for="length">Длина груза:</label>
+                <label for="length">Длина груза в метрах:</label>
                 <input type="number" id="length" name="length" required>
 
-                <label for="width">Ширина груза:</label>
+                <label for="width">Ширина груза в метрах:</label>
                 <input type="number" id="width" name="width" required>
 
-                <label for="height">Высота груза:</label>
+                <label for="height">Высота груза в метрах:</label>
                 <input type="number" id="height" name="height" required>
 
-                <label for="weight">Масса груза:</label>
+                <label for="weight">Масса груза в килограммах:</label>
                 <input type="number" id="weight" name="weight" required>
 
                 <label for="supplier">ИНН поставщика:</label>
@@ -173,12 +170,50 @@
                 <input type="checkbox" id="chemicallyActive" name="chemicallyActive" >
 
                 <label for="status">Статус</label>
-                <input type="text" name="status" id="status" required>
+                <select id="status" name="status">
+                    <option value="Готов к отправке">Готов к отправке</option>
+                    <option value="Отправлен на хранение">Отправлен на хранение</option>
+                </select>
 
                 <label for="addEq">Дополнительное оборудование</label>
                 <input type="checkbox" name="addEq" id="addEq">
 
+                
 
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="createContainerModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCreateContainerModal">&times;</span>
+            <h2>Добавить новый контейнер</h2>
+            <form id="create-container-form">
+
+                <label for="name">Название контейнера:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="length">Длина контейнера в метрах:</label>
+                <input type="number" id="length" name="length" required>
+
+                <label for="width">Ширина контейнера в метрах:</label>
+                <input type="number" id="width" name="width" required>
+
+                <label for="height">Высота контейнера в метрах</label>
+                <input type="number" id="height" name="height" required>
+
+                <label for="wallThickness">Толщина стенок контейнера в сантиметрах:</label>
+                <input type="number" id="wallThickness" name="wallThickness" required>
+
+                <label for="status">Текущее состояние контейнера</label>
+                <select id="status" name="status">
+                    <option value="Готов к эксплуатации">Готов к эксплуатации</option>
+                    <option value="Находится в ремонте">Находится в ремонте</option>
+                    <option value="Сломан">Сломан</option>
+                </select>
 
                 <button type="submit">Создать</button>
             </form>
@@ -198,5 +233,6 @@
     <script src="js/addTransportButton.js"></script>
     <script src="js/addCargoButton.js"></script>
     <script src="js/planSteps.js"></script>
+    <script src="js/addContainerButton.js"></script>
 </body>
 </html>

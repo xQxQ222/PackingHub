@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PackingHub.Calculate;
+using PackingHub.HelperMethods;
 using PackingHub.Models;
 
 namespace PackingHub.Controllers
@@ -36,6 +37,11 @@ namespace PackingHub.Controllers
         public IActionResult GetRoutes()
         {
             var routes = _context.Routes
+                .Select(x=>new RouteWithAddressArray(
+                    x,
+                    _context.Addresses.Where(address=>x.AddressesNumbers.Contains(address.Id)).ToArray(),
+                    _context.Transports.Where(tr=>tr.VinNumber==x.Transport).FirstOrDefault()
+                    ))
                 .ToList();
 
             return PartialView("_RoutesStep", routes);

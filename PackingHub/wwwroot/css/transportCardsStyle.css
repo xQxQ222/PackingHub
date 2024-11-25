@@ -87,3 +87,67 @@
     #create-address-btn:hover {
         background-color: #45a049;
     }
+
+#create-container-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #create-container-btn:hover {
+        background-color: #45a049;
+    }
+
+#create-organization-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #create-organization-btn:hover {
+        background-color: #45a049;
+    }
+
+#create-route-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #create-route-btn:hover {
+        background-color: #45a049;
+    }
+
+#create-restriction-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #create-restriction-btn:hover {
+        background-color: #45a049;
+    }

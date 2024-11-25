@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PackingHub.HelperMethods;
 using PackingHub.Models;
 
 namespace PackingHub.Controllers
@@ -17,8 +18,14 @@ namespace PackingHub.Controllers
         [HttpGet("GetRoutesList")]
         public IActionResult GetAddressList()
         {
-            var addresses = _context.Routes.ToList();
-            return PartialView("_RoutesCards", addresses);
+            var routes = _context.Routes
+                .Select(x => new RouteWithAddressArray(
+                    x,
+                    _context.Addresses.Where(address => x.AddressesNumbers.Contains(address.Id)).ToArray(),
+                    _context.Transports.Where(tr => tr.VinNumber == x.Transport).FirstOrDefault()
+                    ))
+                .ToList();
+            return PartialView("_RoutesCards", routes);
         }
 
         // Метод для создания нового адреса

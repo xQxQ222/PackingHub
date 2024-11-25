@@ -1,35 +1,29 @@
 ﻿
 // Функция для открытия модального окна
-function openCreateCargoModal() {
-    document.getElementById('createCargoModal').style.display = 'flex';
+function openCreateContainerModal() {
+    document.getElementById('createContainerModal').style.display = 'flex';
 }
 
 // Функция для закрытия модального окна
-function closeCreateCargoModal() {
-    document.getElementById('createCargoModal').style.display = 'none';
+function closeCreateContainerModal() {
+    document.getElementById('createContainerModal').style.display = 'none';
 }
 
 // Обработка отправки формы
-document.getElementById('create-cargo-form').addEventListener('submit', function (event) {
+document.getElementById('create-container-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Предотвращаем перезагрузку страницы
 
     const newAddress = {
         name: document.getElementById('name').value,
         length: document.getElementById('length').value,
         width: document.getElementById('width').value,
-        height: document.getElementById('height').value,
+        height: document.getElementById('width').value,
         weight: document.getElementById('weight').value,
-        supplier: document.getElementById('supplier').value,
-        customer: document.getElementById('customer').value,
-        deliveryAddress: document.getElementById('deliveryAddress').value,
-        fragility: document.getElementById('fragility').checked,
-        flammable: document.getElementById('flammable').checked,
-        chemicallyActive: document.getElementById('chemicallyActive').checked,
-        status: document.getElementById('status').value,
-        addEq: document.getElementById('addEq').checked
+        wallThickness: document.getElementById('wallThickness').value,
+        status: document.getElementById('status').value
     };
 
-    fetch('/Cargos/CreateCargo', {
+    fetch('/Containers/CreateContainer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,24 +32,24 @@ document.getElementById('create-cargo-form').addEventListener('submit', function
     })
         .then(response => {
             if (response.ok) {
-                alert('Товар успешно добавлен!');
+                alert('Контейнер успешно добавлен!');
                 closeCreateCargoModal(); // Закрыть модальное окно
                 // Обновить список адресов
-                document.getElementById('btn-cargos').click();
+                document.getElementById('btn-containers').click();
             } else {
-                alert('Ошибка при добавлении товара.');
+                alert('Ошибка при добавлении груза.');
             }
         })
         .catch(error => console.error('Error:', error));
 });
 
-document.getElementById('btn-cargos').addEventListener('click', function () {
+document.getElementById('btn-containers').addEventListener('click', function () {
     // Показываем карточки адресов
-    fetch('/Cargos/GetCargoList')
+    fetch('/Containers/GetContainersList')
         .then(response => response.text())
         .then(data => {
             document.getElementById('main-content').innerHTML = data;
-            document.getElementById('create-cargo-btn').classList.remove('hidden');
+            document.getElementById('create-container-btn').classList.remove('hidden');
         })
         .catch(error => console.error('Error:', error));
 });
@@ -64,6 +58,6 @@ document.getElementById('btn-cargos').addEventListener('click', function () {
 document.querySelectorAll('.menu-button').forEach(button => {
     button.addEventListener('click', function () {
         // Скрываем кнопку "Создать адрес"
-        document.getElementById('create-cargo-btn').classList.add('hidden');
+        document.getElementById('create-container-btn').classList.add('hidden');
     });
 });

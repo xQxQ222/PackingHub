@@ -12,7 +12,7 @@ namespace PackingHub.Calculate
             this.Length = container.Length;
             this.Weight = container.Weight;
             this.Status = container.Status;
-            this.WallThickness = container.WallThickness;
+            this.WallThickness = container.WallThickness/100;
             this.Name = container.Name;
         }
         public float InnerLength => Length - 2 * WallThickness;

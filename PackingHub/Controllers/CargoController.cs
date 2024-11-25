@@ -25,6 +25,7 @@ namespace PackingHub.Controllers
         [HttpPost("CreateCargo")]
         public IActionResult CreateCargoRestriction([FromBody] Cargo newCargoRestriction)
         {
+            newCargoRestriction.Number = _context.Cargos.Select(x => x.Number).Max() + 1;
             if (ModelState.IsValid)
             {
                 _context.Add(newCargoRestriction);

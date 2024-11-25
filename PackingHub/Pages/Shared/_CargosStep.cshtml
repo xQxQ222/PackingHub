@@ -2,10 +2,15 @@
 <h2>Шаг 1: Выберите грузы</h2>
 @foreach (var cargo in Model)
 {
-    <label>
-        <input type="checkbox" name="cargos" value="@cargo.Number" />
-        Груз @cargo.Name
-    </label>
-    <br />
+
+    <div class="address-cards">
+        <div class="card">
+            <h3>Груз: @cargo.Name</h3>
+            <p>Размеры: @cargo.Length м. x @cargo.Width м. х @cargo.Height м.</p>
+            <label>
+                <input type="checkbox" name="cargos" value="@cargo.Number" />
+            </label>
+        </div>
+    </div>
 }
-<button onclick="loadStep('GetContainers')">Далее</button>
+<button class="menu-button" onclick="loadStep('GetContainers')">Далее</button>

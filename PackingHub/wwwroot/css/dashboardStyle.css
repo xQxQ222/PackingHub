@@ -201,6 +201,21 @@ form textarea {
     border-radius: 5px;
 }
 
+form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+    form select:focus {
+        border-color: #007BFF;
+        outline: none;
+    }
+
 form button {
     padding: 10px 15px;
     background-color: #28a745; /* Зеленый цвет для кнопки */

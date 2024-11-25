@@ -1,22 +1,36 @@
-﻿@model List<PackingHub.Models.Route>
+﻿@model List<PackingHub.HelperMethods.RouteWithAddressArray>
 <h2>Шаг 3: Выберите маршрут</h2>
-@foreach (var route in Model)
+@foreach (var cargo in Model)
 {
-    <label>
-        <input type="radio" name="route" value="@route.RouteNumber" />
-        Маршрут №@route.RouteNumber
-    </label>
-    <br />
+    <div class="address-cards">
+        <div class="card">
+            <h3>Номер маршрута: @cargo.RouteNumber</h3>
+            <br />
+            <p>Длина маршрута: @cargo.Length км.</p>
+            <br />
+            <p>Дата отправления: @cargo.DepartureDate</p>
+            <br />
+            <p>Дата прибытия: @cargo.ArrivalDate</p>
+            <br />
+            <p>Адреса:</p>
+            <select name="addresses_@cargo.RouteNumber">
+                <option value="empty"></option> 
+                @foreach (var address in cargo.addresses) // Предполагается, что у каждого груза есть список адресов
+                {
+                    <option value="@address.Id">г. @address.City, ул. @address.Street, д. @address.House</option>
+                }
+            </select>
+            <br />
+            <br />
+            <p>Транспорт: @cargo.transport.Brand @cargo.transport.Model</p>
+            <br />
+            <label>
+                <input type="radio" name="cargos" value="@cargo.RouteNumber" />
+            </label>
+        </div>
+    </div>
 }
+<br />
 <div>
-    <label>Выберите дату отправления:</label>
-    <input type="date" id="departureDate" /><br />
-
-    <label>Выберите дату прибытия:</label>
-    <input type="date" id="arrivalDate" /><br />
-
-    <label>Статус:</label>
-    <input type="text" id="status" /><br />
-
-    <button onclick="submitLoad()">Создать погрузку</button>
+    <button class="menu-button" onclick="submitLoad()">Готово</button>
 </div>

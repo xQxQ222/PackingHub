@@ -6,7 +6,7 @@ namespace PackingHub.Models
     {
         [Key]
         public int RouteNumber { get; set; }
-        public string AddressesNumbers { get; set; }
+        public int[] AddressesNumbers { get; set; }
         public int Length { get; set; }
         public string Transport { get; set; }
         public DateOnly DepartureDate { get; set; }
