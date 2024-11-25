@@ -38,56 +38,6 @@
     display: none;
 }
 
-/* Стиль для кнопки "Создать транспорт" */
-#create-transport-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
-#create-transport-btn:hover {
-    background-color: #45a049;
-}
-
-#create-cargo-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-    #create-cargo-btn:hover {
-        background-color: #45a049;
-    }
-
-#create-address-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-    #create-address-btn:hover {
-        background-color: #45a049;
-    }
-
 #create-container-btn {
     position: absolute;
     top: 20px;
@@ -151,3 +101,55 @@
     #create-restriction-btn:hover {
         background-color: #45a049;
     }
+
+/* Стиль для кнопки "Создать транспорт" */
+#create-transport-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#create-transport-btn:hover {
+    background-color: #45a049;
+}
+
+#create-cargo-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #create-cargo-btn:hover {
+        background-color: #45a049;
+    }
+
+#create-address-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #create-address-btn:hover {
+        background-color: #45a049;
+    }
+
+
