@@ -2,7 +2,6 @@
 <h2>Шаг 1: Выберите грузы</h2>
 @foreach (var cargo in Model)
 {
-
     <div class="address-cards">
         <div class="card">
             <h3>Груз: @cargo.Name</h3>
@@ -15,6 +14,5 @@
 }
 <div class="button-container">
     <button class="action-button" onclick="loadStep('GetContainers')">Далее</button>
-    <button class="action-button">Назад</button>
     <button class="action-button" >Отмена</button>
 </div>

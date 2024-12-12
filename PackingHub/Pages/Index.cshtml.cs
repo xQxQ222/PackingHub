@@ -16,7 +16,7 @@ public class IndexModel : PageModel
             return new JsonResult(new { success = false, message = "Логин и пароль не могут быть пустыми" });
         }
 
-        if (Username == "admin" && Password == "123")
+        if (Username == "admin" && Password == "password")
         {
             return new JsonResult(new { success = true });
         }

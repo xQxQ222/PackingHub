@@ -33,5 +33,6 @@ namespace PackingHub.Controllers
             }
             return BadRequest("Invalid data");
         }
+
     }
 }

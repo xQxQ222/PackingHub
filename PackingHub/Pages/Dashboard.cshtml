@@ -48,7 +48,7 @@
         <!-- Основной контент -->
         <main class="main-content" id="main-content">
             <h1>Добро пожаловать в личный кабинет!</h1>
-            <div class="content-area" >
+            <div class="content-area">
                 <p>Выберите раздел слева для работы с данными.</p>
             </div>
         </main>
@@ -62,16 +62,16 @@
 
     <button id="create-cargo-btn" class="btn hidden" onclick="openCreateCargoModal()">Добавить товар</button>
 
-    <button id="create-restriction-btn" class="btn hidden">Добавить ограничение</button>
+    <button id="create-restriction-btn" class="btn hidden" onclick="openCreateRestrictionModal()">Добавить ограничение</button>
 
-    <button id="create-organization-btn" class="btn hidden">Добавить организацию</button>
+    <button id="create-organization-btn" class="btn hidden" onclick="openCreateOrganizationModal()">Добавить организацию</button>
 
     <button id="create-container-btn" class="btn hidden" onclick="openCreateContainerModal()">Добавить контейнер</button>
-    <button id="create-route-btn" class="btn hidden">Добавить маршрут</button>
+    <button id="create-route-btn" class="btn hidden" onclick="openCreateRouteModal()">Добавить маршрут</button>
 
     <div id="createAddressModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <span class="close" onclick="closeCreateAddressModal">&times;</span>
+            <span class="close" onclick="closeCreateAddressModal()">&times;</span>
             <h2>Добавить новый адрес</h2>
             <form id="createAddressForm">
                 <label for="addressName">Название:</label>
@@ -101,7 +101,7 @@
     <!-- Модальное окно -->
     <div id="createTransportModal" class="modal hidden">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeCreateTransportModal">&times;</span>
+            <span class="close" onclick="closeCreateTransportModal()">&times;</span>
             <h2>Добавить новый транспорт</h2>
             <form id="create-transport-form">
                 <label for="vinNumber">VIN номер:</label>
@@ -132,7 +132,7 @@
 
     <div id="createCargoModal" class="modal hidden">
         <div class="modal-content">
-            <span class="close-btn" id="close-modal-btn">&times;</span>
+            <span class="close" onclick="closeCreateCargoModal()">&times;</span>
             <h2>Добавить новый товар</h2>
             <form id="create-cargo-form">
 
@@ -161,13 +161,13 @@
                 <textarea id="deliveryAddress" name="deliveryAddress"></textarea>
 
                 <label for="fragility">Хрупкий груз</label>
-                <input type="checkbox" id="fragility" name="fragility" >
+                <input type="checkbox" id="fragility" name="fragility">
 
                 <label for="flammable">Огнеопасный груз</label>
-                <input type="checkbox" id="flammable" name="flammable" >
+                <input type="checkbox" id="flammable" name="flammable">
 
                 <label for="chemicallyActive">Химически опасный груз</label>
-                <input type="checkbox" id="chemicallyActive" name="chemicallyActive" >
+                <input type="checkbox" id="chemicallyActive" name="chemicallyActive">
 
                 <label for="status">Статус</label>
                 <select id="status" name="status">
@@ -178,7 +178,7 @@
                 <label for="addEq">Дополнительное оборудование</label>
                 <input type="checkbox" name="addEq" id="addEq">
 
-                
+
 
                 <button type="submit">Создать</button>
             </form>
@@ -189,7 +189,7 @@
 
     <div id="createContainerModal" class="modal hidden">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeCreateContainerModal">&times;</span>
+            <span class="close" onclick="closeCreateContainerModal()">&times;</span>
             <h2>Добавить новый контейнер</h2>
             <form id="create-container-form">
 
@@ -214,6 +214,7 @@
                     <option value="Находится в ремонте">Находится в ремонте</option>
                     <option value="Сломан">Сломан</option>
                 </select>
+                <br />
 
                 <button type="submit">Создать</button>
             </form>
@@ -221,12 +222,91 @@
     </div>
 
 
+    <div id="createRouteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreateRouteModal()">&times;</span>
+            <h2>Добавить новый маршрут</h2>
+            <form id="create-route-form">
+                <label for="routeNomber">Номер маршрута:</label>
+                <input type="text" id="routeNomber" name="routeName" required>
 
-    
+                <label for="route">Адреса:</label>
+                <input type="text" id="routeAdresses" name="routeAdresses" required>
 
+                <label for="routeLength">Протяженность:</label>
+                <input type="number" id="routeLength" name="routeLength" required>
 
+                <label for="routeTransport">Транспорт:</label>
+                <input type="text" id="routeTransport" name="routeTransport" required>
 
+                <label for="routeNumber" text" id="routeNumber" name="routeNumber" required></label>
 
+                    <label for="routeDeparture_date">Дата отправления:</label>
+                <input type="date" id="routeDeparture_date" name="routeDeparture_date" required></input>
+
+                    <label for="routeArrival_date">Дата прибытия:</label>
+                    <input type="date" id="routeArrival_date" name="routeArrival_date" required></input>
+
+                    <label for="routeComments">Комментарии:</label>
+                    <textarea id="routeComments" name="routeComments"></textarea>
+
+                    <button type="submit" class="btn btn-success">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="createOrganizationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreateOrganizationModal()">&times;</span>
+            <h2>Добавить новая организация</h2>
+            <form id="create-organization-form">
+                <label for="OrganizationsType_of_organization">Тип организации:</label>
+                <input type="text" id="OrganizationsType_of_organization" name="OrganizationsType_of_organization" required>
+
+                <label for="OrganizationsLegal_number">Юридический номер:</label>
+                <input type="text" id="OrganizationsLegal_number" name="OrganizationsLegal_number" required>
+
+                <label for="OrganizationsINN">ИНН:</label>
+                <input type="text" id="OrganizationsINN" name="OrganizationsINN" required>
+
+                <label for="OrganizationsMail">Эл. почта:</label>
+                <input type="email" id="OrganizationsMail" name="OrganizationsMail" required>
+
+                <label for="OrganizationsPhone_number" >Номер телефона</label>
+                <input type="tel" id="phone" name="phoneNumber" required />
+
+                    <label for="OrganizationsFax">Факс:</label>
+                    <textarea id="OrganizationsFax" name="OrganizationsFax"></textarea>
+
+                    <label for="OrganizationsAdress">Адресс:</label>
+                    <textarea id="OrganizationsAdress" name="OrganizationsAdress"></textarea>
+
+                    <label for="OrganizationsDescription">Описание:</label>
+                    <textarea id="OrganizationsDescription" name="OrganizationsDescription"></textarea>
+
+                    <button type="submit" class="btn btn-success">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="createRestrictionModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreateRestrictionModal()">&times;</span>
+            <h2>Добавить новое ограничение</h2>
+            <form id="create-restriction-form">
+                <label for="LimitationsCargo_1">Груз 1:</label>
+                <input type="text" id="LimitationsCargo_1" name="LimitationsCargo_1" required>
+
+                <label for="LimitationsCargo_2">Груз 2:</label>
+                <input type="text" id="LimitationsCargo_2" name="LimitationsCargo_2" required>
+
+                <label for="LimitationsLimitation">Ограничение:</label>
+                <input type="text" id="LimitationsLimitation" name="LimitationsLimitation" required>
+
+                <button type="submit" class="btn btn-success">Создать</button>
+            </form>
+        </div>
+    </div>
     <script src="js/drawCards.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/addAddressButton.js"></script>
@@ -234,5 +314,8 @@
     <script src="js/addCargoButton.js"></script>
     <script src="js/planSteps.js"></script>
     <script src="js/addContainerButton.js"></script>
+    <script src="js/addRestrictionButton.js"></script>
+    <script src="js/addOrganizationButton.js"></script>
+    <script src="js/addRouteButton.js"></script>
 </body>
 </html>

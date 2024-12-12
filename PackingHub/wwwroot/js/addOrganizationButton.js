@@ -1,16 +1,16 @@
 ﻿
 // Функция для открытия модального окна
-function openCreateContainerModal() {
-    document.getElementById('createContainerModal').style.display = 'flex';
+function openCreateOrganizationModal() {
+    document.getElementById('createOrganizationModal').style.display = 'flex';
 }
 
 // Функция для закрытия модального окна
-function closeCreateContainerModal() {
-    document.getElementById('createContainerModal').style.display = 'none';
+function closeCreateOrganizationModal() {
+    document.getElementById('createOrganizationModal').style.display = 'none';
 }
 
 // Обработка отправки формы
-document.getElementById('create-container-form').addEventListener('submit', function (event) {
+document.getElementById('create-organization-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Предотвращаем перезагрузку страницы
 
     const newAddress = {
@@ -18,12 +18,12 @@ document.getElementById('create-container-form').addEventListener('submit', func
         length: document.getElementById('length').value,
         width: document.getElementById('width').value,
         height: document.getElementById('height').value,
-        weight: document.getElementById('weight').value, 
+        weight: document.getElementById('weight').value,
         wallThickness: document.getElementById('wallThickness').value,
         status: document.getElementById('status').value
     };
 
-    fetch('/Containers/CreateContainer', {
+    fetch('/Organizations/CreateOrganization', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -35,29 +35,27 @@ document.getElementById('create-container-form').addEventListener('submit', func
                 alert('Контейнер успешно добавлен!');
                 closeCreateCargoModal(); // Закрыть модальное окно
                 // Обновить список адресов
-                document.getElementById('btn-containers').click();
+                document.getElementById('btn-organizations').click();
             } else {
-                alert('Ошибка при добавлении груза.');
+                alert('Ошибка при добавлении ограничения.');
             }
         })
         .catch(error => console.error('Error:', error));
 });
 
-document.getElementById('btn-containers').addEventListener('click', function () {
-    // Показываем карточки адресов
-    fetch('/Containers/GetContainersList')
+document.getElementById('btn-organizations').addEventListener('click', function () {
+    fetch('/Organizations/GetOrganizationsList')
         .then(response => response.text())
         .then(data => {
             document.getElementById('main-content').innerHTML = data;
-            document.getElementById('create-container-btn').classList.remove('hidden');
+            document.getElementById('create-organization-btn').classList.remove('hidden');
         })
         .catch(error => console.error('Error:', error));
 });
 
-// Если нужно, скрываем кнопку "Создать адрес" при клике на другие кнопки
 document.querySelectorAll('.menu-button').forEach(button => {
     button.addEventListener('click', function () {
         // Скрываем кнопку "Создать адрес"
-        document.getElementById('create-container-btn').classList.add('hidden');
+        document.getElementById('create-organization-btn').classList.add('hidden');
     });
 });
